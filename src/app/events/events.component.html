@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="content-cotainer">
+    <div class="events-container">
+      <div class="event">
+        <div class="img-container">
+          <img
+            class="img-thumbnail img-fluid"
+            src="../assets/events.jpg"
+            alt="event image"
+          />
+        </div>
+        <p>here some infos about the event</p>
+      </div>
+      <div class="separate"></div>
+      <div class="event">
+        <div class="img-container">
+          <img
+            class="img-thumbnail img-fluid"
+            src="../assets/events.jpg"
+            alt="event image"
+          />
+        </div>
+        <p>here some infos about the event</p>
+      </div>
+      <div class="separate"></div>
+      <div class="event">
+        <div class="img-container">
+          <img
+            class="img-thumbnail img-fluid"
+            src="../assets/events.jpg"
+            alt="event image"
+          />
+        </div>
+        <p>here some infos about the event</p>
+      </div>
+      <div class="separate"></div>
+      <div class="event">
+        <div class="img-container">
+          <img
+            class="img-thumbnail img-fluid"
+            src="../assets/events.jpg"
+            alt="event image"
+          />
+        </div>
+        <p>here some infos about the event</p>
+      </div>
+      <div class="separate"></div>
+    </div>
+
+    <div class="calendar-container">
+      <div class="calendar"></div>
+
+      <button href="" type="button" (click)="next()" class="btn btn-primary">
+        Next
+      </button>
+      <button
+        href=""
+        type="button"
+        (click)="previous()"
+        class="btn btn-primary"
+      >
+        Previous
+      </button>
+
+      <main>
+        <div class="calendar">
+          <div class="month-indicator">
+            <time datetime="2019-02"> </time>
+          </div>
+          <div class="day-of-week">
+            <div *ngFor="let item of weekdays">{{ item }}</div>
+          </div>
+          <div class="date-grid">
+            <button *ngFor="let item of state">
+              <time>{{ item.getDate() }}</time>
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>

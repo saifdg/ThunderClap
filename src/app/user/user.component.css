@@ -1,0 +1,12 @@
+.btn-check{
+    background-color: aliceblue;
+    color: black;
+    letter-spacing: 2px;
+}
+
+.progress-bar{
+    background-color: black;
+}
+.container{
+    overflow-y: hidden !important;
+}

@@ -1,0 +1,12 @@
+nav{
+    position: sticky;
+    top:0;
+    background-color: rgba(40, 16, 78, 0.9);
+}
+nav .navbar-nav li a{
+    color: white !important;
+    }
+
+    .dropdown-menu{
+        background-color: rgba(40, 16, 78, 0.9);
+    }
