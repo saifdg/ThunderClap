@@ -3,153 +3,72 @@ import * as moment from 'moment';
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
-  styleUrls: ['./events.component.css']
+  styleUrls: ['./events.component.css'],
 })
 export class EventsComponent implements OnInit {
+  week: any = [
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
+  ];
 
- 
+  monthSelect: any[] = [];
+  dateSelect: any;
+  dateValue: any;
+  public date = moment();
 
-    weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    
-    viewDate: Date = new Date();
-  
-    firstDay: Date = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth(), 1);
-  
-    lastDay: Date = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth() + 1, 0);
-  
-    state: Date[] = [];
-  
-  
-  
-    suitableday: Date = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth(), (this.lastDay.getDate()-this.firstDay.getDate())-this.viewDate.getDay());
-  
-    newDate: Date = new Date();
-  
-    ngOnInit() {
-      this.newDate.setMonth(this.viewDate.getMonth()-1);
-      this.suitableday = new Date(this.newDate.getFullYear(), this.newDate.getMonth(), (this.lastDay.getDate()-this.firstDay.getDate())-this.correctWeekIndex(this.viewDate)+1); 
-      console.log(this.viewDate.getDay());
-  
-      for(let i=0;i<=this.viewDate.getDay();i++) {
-          this.state.push(new Date(this.suitableday));
-          this.suitableday.setDate(this.suitableday.getDate()+1);
-      }
-      
-  
-      
-  
-  
-  
-  
-  
-      for(let _item =  this.firstDay.getDate(); _item<=this.lastDay.getDate(); _item++) {
-        
-        //this.state = [
-        //  ...this.state,
-        //  {this.firstDay}
-        //]
-          
-        //console.log(this.firstDay);
-        this.state.push(new Date(this.firstDay));
-        //console.log(this.state);
-        //this.state.push(this.firstDay);
-      
-        this.firstDay.setDate(this.firstDay.getDate()+1);
-      }
-      this.state.map( item => {
-        console.log(item);
-      })
-      
-      //console.log(this.state)
-    }
-  
-    next() {
-  
-      this.state = [];
-  
-  
-  
-  
-      this.viewDate.setMonth(this.viewDate.getMonth()+1);
-  
-      this.firstDay = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth(), 1);
-  
-      this.lastDay = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth() + 1, 0);
-  
-      
-  
-  
-  
-      this.newDate.setMonth(this.viewDate.getMonth()-1);
-  
-  
-      this.suitableday = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth(), this.lastDay.getDate()-this.viewDate.getDay());
-  
-      
-      console.log(this.suitableday.getDate());
-  
-  
-      for(let i=0;i<=this.viewDate.getDay();i++) {
-          this.state.push(new Date(this.suitableday));
-  
-          this.suitableday.setDate(this.suitableday.getDate()+1);
-      }
-  
-      
-  
-      
-  
-      for(let _item =  this.firstDay.getDate(); _item<=this.lastDay.getDate(); _item++) {
-        
-        this.state.push(new Date(this.firstDay));
-  
-        this.firstDay.setDate(this.firstDay.getDate()+1);
-      }
-  
-      //this.state.map( item => {
-      //  console.log(item);
-      //})
-    }
-  
-    
-    previous() {
-      this.state = [];
-  
-      this.viewDate.setMonth(this.viewDate.getMonth()-1);
-  
-      this.firstDay = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth(), 1);
-  
-      this.lastDay = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth() + 1, 0);
-  
-  
-  
-      this.newDate.setMonth(this.viewDate.getMonth()-1);
-  
-      this.suitableday = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth(), this.lastDay.getDate()-this.viewDate.getDay());
-  
-      
-      
-      for(let i=0;i<=this.viewDate.getDate();i++) {
-          this.state.push(new Date(this.suitableday));
-  
-          this.suitableday.setDate(this.suitableday.getDate()+1);
-      }
-  
-  
-  
-      for(let _item =  this.firstDay.getDate(); _item<=this.lastDay.getDate(); _item++) {
-        this.state.push(new Date(this.firstDay));
-  
-        this.firstDay.setDate(this.firstDay.getDate()+1);
-      }
-  
-      this.state.map( item => {
-        console.log(item);
-      })
-    }
-  
-    private correctWeekIndex(date: Date): number {
-      return (date.getDay() + 6)%7;
-    }
-    
+  constructor() {}
+
+  ngOnInit(): void {
+    this.getDaysFromDate(this.date.format('MM'), this.date.format('YYYY'));
   }
+
+  getDaysFromDate(month: any, year: any) {
+    const startDate = moment.utc(`${year}/${month}/01`);
+    const endDate = startDate.clone().endOf('month');
+    this.dateSelect = startDate;
+
+    const diffDays = endDate.diff(startDate, 'days', true);
+    const numberDays = Math.round(diffDays);
+
+    const arrayDays = Object.keys([...Array(numberDays)]).map((a: any) => {
+      a = parseInt(a) + 1;
+      const dayObject = moment(`${year}-${month}-${a}`);
+      return {
+        name: dayObject.format('dddd'),
+        value: a,
+        indexWeek: dayObject.isoWeekday(),
+      };
+    });
+
+    this.monthSelect = arrayDays;
+  }
+
+  changeMonth(flag: any) {
+    if (flag < 0) {
+      const prevDate = this.dateSelect.clone().subtract(1, 'month');
+      this.getDaysFromDate(prevDate.format('MM'), prevDate.format('YYYY'));
+    } else {
+      const nextDate = this.dateSelect.clone().add(1, 'month');
+      this.getDaysFromDate(nextDate.format('MM'), nextDate.format('YYYY'));
+    }
+  }
+
+  clickDay(day: any) {
+    const monthYear = this.dateSelect.format('YYYY-MM');
+    const parse = `${monthYear}-${day.value}`;
+    const objectDate = moment(parse).format('YYYY/MM/DD');
+    this.dateValue = objectDate;
+  }
+  public todayCheck(day: any) {
+
+    console.log(day)
+    console.log(moment().format('D') )
+
+    return moment().format('D') == day;
+  }
+}

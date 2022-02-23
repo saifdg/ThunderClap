@@ -1,12 +1,31 @@
-nav{
-    position: sticky;
-    top:0;
-    background-color: rgba(40, 16, 78, 0.9);
+nav {
+  position: sticky;
+  top: 0%;
+  background-color: rgba(105, 57, 184, 0.1);
+  position: relative;
+  padding: 10px 0;
+  z-index: 1;
+  text-decoration: none;
 }
-nav .navbar-nav li a{
-    color: white !important;
-    }
+.container-fluid {
+  width: 80%;
+  margin: 0 auto ;
+  background-color: rgba(105, 57, 184, 0.9);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.link-container {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    .dropdown-menu{
-        background-color: rgba(40, 16, 78, 0.9);
-    }
+.link-container a{
+  color: black;
+  display: inline;
+  padding: 20px;
+  margin: 4px;
+  border: 1px solid black;
+}

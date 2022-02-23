@@ -1,80 +1,89 @@
-<div class="container">
-  <div class="content-cotainer">
-    <div class="events-container">
-      <div class="event">
-        <div class="img-container">
-          <img
-            class="img-thumbnail img-fluid"
-            src="../assets/events.jpg"
-            alt="event image"
-          />
+<div class="container-fluid">
+  <div class="container">
+    <div class="content-cotainer">
+      <div class="events-container">
+        <div class="event">
+          <div class="img-container">
+            <img
+              class="img-thumbnail img-fluid"
+              src="../assets/events.jpg"
+              alt="event image"
+            />
+          </div>
+          <p>here some infos about the event</p>
         </div>
-        <p>here some infos about the event</p>
-      </div>
-      <div class="separate"></div>
-      <div class="event">
-        <div class="img-container">
-          <img
-            class="img-thumbnail img-fluid"
-            src="../assets/events.jpg"
-            alt="event image"
-          />
+        <div class="separate"></div>
+        <div class="event">
+          <div class="img-container">
+            <img
+              class="img-thumbnail img-fluid"
+              src="../assets/events.jpg"
+              alt="event image"
+            />
+          </div>
+          <p>here some infos about the event</p>
         </div>
-        <p>here some infos about the event</p>
-      </div>
-      <div class="separate"></div>
-      <div class="event">
-        <div class="img-container">
-          <img
-            class="img-thumbnail img-fluid"
-            src="../assets/events.jpg"
-            alt="event image"
-          />
+        <div class="separate"></div>
+        <div class="event">
+          <div class="img-container">
+            <img
+              class="img-thumbnail img-fluid"
+              src="../assets/events.jpg"
+              alt="event image"
+            />
+          </div>
+          <p>here some infos about the event</p>
         </div>
-        <p>here some infos about the event</p>
-      </div>
-      <div class="separate"></div>
-      <div class="event">
-        <div class="img-container">
-          <img
-            class="img-thumbnail img-fluid"
-            src="../assets/events.jpg"
-            alt="event image"
-          />
+        <div class="separate"></div>
+        <div class="event">
+          <div class="img-container">
+            <img
+              class="img-thumbnail img-fluid"
+              src="../assets/events.jpg"
+              alt="event image"
+            />
+          </div>
+          <p>here some infos about the event</p>
         </div>
-        <p>here some infos about the event</p>
+        <div class="separate"></div>
       </div>
-      <div class="separate"></div>
-    </div>
 
-    <div class="calendar-container">  
-      <button href="" type="button" (click)="next()" class="btn btn-primary">
-        Next
-      </button>
-      <button
-        href=""
-        type="button"
-        (click)="previous()"
-        class="btn btn-primary"
-      >
-        Previous
-      </button>
+      <div class="calendar-container">
+        <div class="wrapper-calendar">
+          <div class="header-calendar">
+            <div>
+              <button (click)="changeMonth(-1)" class="btn-prev">
+                <mat-icon>keyboard_arrow_left</mat-icon>
+              </button>
+            </div>
+            <div class="title">{{ dateSelect | date: "MMMM, yyyy" }}</div>
+            <div>
+              <button (click)="changeMonth(1)" class="btn-next">
+                <mat-icon>keyboard_arrow_right</mat-icon>
+              </button>
+            </div>
+          </div>
+          <ol>
+            <li *ngFor="let day of week" class="day-name">
+              {{ day | slice: 0:3 }}
+            </li>
 
-      <main>
-        <div class="calendar">
-          <div class="month-indicator">
-            <time datetime="2019-02"> </time>
-          </div>
-          <div class="day-of-week">
-            <div *ngFor="let item of weekdays">{{ item }}</div>
-          </div>
-          <div class="date-grid">
-            <button *ngFor="let item of state">
-              <time>{{ item.getDate() }}</time>
-            </button>
-          </div>
+            <li
+              id="day"
+              (click)="clickDay(day)"
+              [style.gridColumnStart]="first ? day?.indexWeek : 'auto'"
+              *ngFor="let day of monthSelect; let first = first"
+            >
+              <span [ngClass]="{ today: todayCheck(day?.value) }">{{
+                day?.value
+              }}</span>
+            </li>
+          </ol>
         </div>
-      </main>
+
+        <!--  <hr />
+        <div>Fecha: {{ dateValue | date }}</div>-->
+      </div>
     </div>
   </div>
 </div>

@@ -34,7 +34,7 @@
 .text-container::before {
   position: absolute;
   content: "";
-  width: 125%;
+  width: 150%;
   height: 100%;
   left: -140px;
   top: 0;
@@ -44,14 +44,13 @@
 .text-container::after {
   position: absolute;
   content: "";
-  width: 95px;
-  height: 95px;
+  width: 92px;
+  height: 92px;
   transform: rotate(45deg);
   left: -190px;
-  top: 10px;
+  top: 8px;
   background-color: rgba(161, 66, 245, 0.7);
   border-radius: 5px;
-
 }
 
 button {
@@ -65,14 +64,14 @@ button {
   font-weight: 700;
   margin: 10px;
   position: relative;
-  transition: letter-spacing 0.3s, color 0.3s, border 0.1s, background 0.3s ease ;
+  transition: letter-spacing 0.3s, color 0.3s, border 0.1s, background 0.3s ease;
 }
 
 button:hover {
   letter-spacing: 2px;
   color: blueviolet;
   border: none;
-  background:rgba(161, 66, 245, 0.1);
+  background: rgba(161, 66, 245, 0.1);
 }
 button::after {
   content: "";
@@ -99,4 +98,51 @@ button::before {
   right: 0;
   transition: width 0.3s;
   border-radius: 5px;
+}
+.title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 1172px) {
+  .text-container::after {
+    width: 95px;
+    height: 95px;
+    top: 7px;
+    left: -193px;
+  }
+}
+
+@media (max-width: 1027px) {
+  .text-container::after {
+    width: 114px;
+    height: 114px;
+  }
+}
+
+
+
+@media (max-width: 1027px) {
+  .text-container::after {
+    width: 95px;
+    height: 95px;
+    top: 7px;
+  }
+  .text-container::before {
+    width: 145%;
+  }
+}
+
+@media (max-width: 745px) {
+  .text-container::after {
+    width: 108px;
+    height: 108px;
+    top: 16px;
+  }
+  .text-container::before {
+    width: 125%;
+  }
 }

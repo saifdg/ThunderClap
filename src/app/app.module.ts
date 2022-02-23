@@ -9,6 +9,9 @@ import { RegisterComponent } from './register/register.component';
 import { TestComponent } from './test/test.component';
 import { HeaderComponent } from './header/header.component';
 import { EventsComponent } from './events/events.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -17,13 +20,16 @@ import { EventsComponent } from './events/events.component';
     RegisterComponent,
     TestComponent,
     HeaderComponent,
-    EventsComponent
+    EventsComponent,
+    FooterComponent
   ],
   imports: [
+    MatIconModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
