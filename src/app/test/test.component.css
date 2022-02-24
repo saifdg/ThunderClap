@@ -1,7 +1,7 @@
 .container-fluid {
   background-color: #000000;
   background-attachment: fixed;
-  background-image: url(https://umaine.edu/wp-content/uploads/sites/2/2022/01/UMaine-Olympians-Centered-Logo.jpg);
+  background-image: url("/assets/mini-med_splash2.jpg");
   height: 100vh;
   background-size: cover;
   background-position: center;
@@ -64,14 +64,14 @@ button {
   font-weight: 700;
   margin: 10px;
   position: relative;
-  transition: letter-spacing 0.3s, color 0.3s, border 0.1s, background 0.3s ease;
+  transition: letter-spacing 0.3s, color 0.3s, border 0.1s, background-color 0.3s ease;
 }
 
 button:hover {
   letter-spacing: 2px;
-  color: blueviolet;
+  color: white;
+  background-color: transparent;
   border: none;
-  background: rgba(161, 66, 245, 0.1);
 }
 button::after {
   content: "";

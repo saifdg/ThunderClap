@@ -1,19 +1,37 @@
 nav {
   position: sticky;
   top: 0%;
-  background-color: rgba(105, 57, 184, 0.1);
+  background-color: rgba(10, 10, 10, 1);
   position: relative;
-  padding: 10px 0;
   z-index: 1;
   text-decoration: none;
+  overflow: hidden;
 }
 .container-fluid {
+  color: white;
+
   width: 80%;
   margin: 0 auto ;
-  background-color: rgba(105, 57, 184, 0.9);
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.logo-container{
+  width: 180px;
+  height: 80px;
+  cursor: pointer;
+}
+
+.logo-container img{
+    width: 100%;
+    height: 100%;
+}
+.link{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 35%;
 }
 .link-container {
   text-decoration: none;
@@ -23,9 +41,56 @@ nav {
 }
 
 .link-container a{
-  color: black;
+  color: white;
   display: inline;
-  padding: 20px;
+  padding: 18px 22px;
   margin: 4px;
-  border: 1px solid black;
+  border: 1px solid white;
+  font-size: 2.1ch;
+  border-radius: 15px;
+  transition: border-radius 0.3s ease,background-color 0.3s ease;
 }
+
+.link-container a:hover{
+background-color: rgba(255, 255, 255, 0.1);
+border-radius: 20px;
+
+}
+
+.active{
+  border: none !important;
+  border-bottom: 2px solid white !important;
+}
+
+.active:hover{
+  border-radius: 15px !important;
+  background-color: transparent !important;
+}
+
+
+.log{
+  text-decoration: none;
+  border-radius: 25px;
+  font-size: 2.1ch;
+  padding: 15px 22px;
+  overflow: hidden;
+  color: white;
+  background-color:rgb(126, 58, 189) ;
+  border: none;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  z-index: 1;
+  font-weight: 700;
+
+  transition:   background-color 0.3s, color 0.3s,letter-spacing 0.3s;
+
+}
+
+.log:hover{
+  background-color: white;
+  color: #000;
+  letter-spacing: 2px;
+
+}
+

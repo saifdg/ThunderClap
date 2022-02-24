@@ -1,20 +1,24 @@
-<nav class="navbar  ">
-    <div  class="container-fluid ">
-      <div class="brand" href="#">Navbar</div>
-      
-       <div class="link-container">
-        <a class="nav-link active" aria-current="page" href="#">Home</a>
-     
-        <a class="nav-link" href="#">Link</a>   
-       </div>
-           
-         
-        <!--
+<nav class="navbar">
+  <div class="container-fluid">
+    <div class="logo-container" routerLink="/" >
+      <img src="../assets/logo2.png" alt="our logo" />
+    </div>
+
+    <div class="link">
+      <div class="link-container">
+        <a class="nav-link " routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
+        <a class="nav-link " routerLink="/AboutUs" routerLinkActive="active">About Us</a>
+        <a class="nav-link " routerLink="/ContactUs" routerLinkActive="active" >Contact Us</a>
+      </div>
+      <div class="log-container">
+        <a class="log" routerLink="/Auth">Log-in</a>
+      </div>
+    </div>
+
+    <!--
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>-->
-      </div>
-  </nav>
-  <app-test></app-test>
-
+  </div>
+</nav>

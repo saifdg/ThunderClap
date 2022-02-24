@@ -12,6 +12,13 @@ import { EventsComponent } from './events/events.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { FooterComponent } from './footer/footer.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { AuthComponent } from './auth/auth.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
+
 
 @NgModule({
   declarations: [
@@ -21,9 +28,14 @@ import { FooterComponent } from './footer/footer.component';
     TestComponent,
     HeaderComponent,
     EventsComponent,
-    FooterComponent
+    FooterComponent,
+    AboutUsComponent,
+    ContactUsComponent,
+    AuthComponent
   ],
   imports: [
+    MatFormFieldModule,
+    MatInputModule,
     MatIconModule,
     BrowserModule,
     AppRoutingModule,
